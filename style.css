@@ -1,0 +1,794 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: auto;
+  font-family: 'Share Tech Mono', monospace;
+  background: black;
+  /*overflow-x: hidden;*/
+  color: #00ffb3;
+}
+
+/* Matrix Background */
+canvas#matrix {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Hero Content */
+.hero {
+  position: relative;
+  z-index: 1;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  margin-top:-13rem;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #00ffb3;
+  text-shadow: 0 0 5px #00ffb3;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #eee;
+  margin-bottom: 2rem;
+  opacity: 0.8;
+  text-decoration: no;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-left: 2.99rem;
+}
+
+.btn, .btn-outline {
+  padding: 12px 24px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: 2px solid #00ffb3;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn {
+  background: #00ffb3;
+  color: #000;
+  font-weight: bold;
+}
+
+.btn-outline {
+  background: transparent;
+  color: #00ffb3;
+}
+
+.btn:hover {
+  background: #000;
+  color: #00ffb3;
+}
+
+.btn-outline:hover {
+  background: #00ffb3;
+  color: #000;
+}
+
+/* About Section */
+#about-section {
+  position: relative;
+  background: #0a0a0a;
+  color: #00ffb3;
+  padding: 4rem 2rem;
+  font-family: 'Share Tech Mono', monospace;
+  z-index: 1;
+}
+
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  margin: auto;
+  gap: 2rem;
+}
+
+.about-image img {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  border: 2px solid #00ffb3;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #00ffb3aa;
+  transition: 0.3s;
+}
+.about-image {
+  z-index: 1;
+  position: relative;
+  margin-top: 3rem;
+  
+}
+.about-image img:hover {
+  transform: scale(1.03);
+}
+
+.about-text {
+  flex: 1;
+  min-width: 280px;
+  background-color: #111;
+  padding: 2rem;
+  border-left: 3px solid #00ffb3;
+  box-shadow: 0 0 10px #00ffb3aa;
+  animation: flicker 2s infinite alternate;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease;
+}
+
+.about-text.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-text h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #00ffb3;
+  text-shadow: 0 0 5px #00ffb3;
+}
+
+.about-text p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+/* Flicker effect for terminal style */
+@keyframes flicker {
+  0% { opacity: 0.9; }
+  45% { opacity: 0.8; }
+  50% { opacity: 1; }
+  55% { opacity: 0.85; }
+  100% { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+  }
+
+  .about-text {
+    margin-top: 1rem;
+  }
+}
+
+/* Skills & Tools Section */
+#skills-section {
+  position: relative;
+  background-color: #000;
+  color: #00ffb3;
+  padding: 4rem 2rem;
+  font-family: 'Share Tech Mono', monospace;
+  z-index: 1;
+}
+
+.skills-container {
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+}
+
+.skills-title {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  text-shadow: 0 0 10px #00ffb3;
+  animation: glitch 2s infinite;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.5rem;
+}
+
+.skill-card {
+  background-color: #111;
+  border: 1px solid #00ffb3;
+  padding: 1.5rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: 0.3s;
+  box-shadow: 0 0 10px #00ffb377;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.skill-card:hover {
+  background-color: #00ffb3;
+  color: #000;
+  box-shadow: 0 0 20px #00ffb3;
+  transform: scale(1.05);
+}
+
+/* Glitch Text Animation */
+@keyframes glitch {
+  0% {
+    text-shadow: 0 0 2px #00ffb3, 2px 2px #ff00ff;
+  }
+  50% {
+    text-shadow: 2px -2px #00ffb3, -2px 2px #ff00ff;
+  }
+  100% {
+    text-shadow: -1px 2px #00ffb3, 1px -1px #ff00ff;
+  }
+}
+
+/* Fade-in Animation */
+.skill-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.6s ease-out;
+}
+
+@media (max-width: 600px) {
+  .skills-title {
+    font-size: 2rem;
+  }
+
+  .skill-card {
+    padding: 1rem;
+  }
+}
+
+/* ✅ Matrix Canvas - Full Page Background */
+#matrix {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1; /* Put it behind all sections */
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Let user interact with content above */
+}
+
+/* 🎯 Hacking Projects Section */
+#projects-section {
+  background-color: #000;
+  padding: 5rem 2rem;
+  color: #00ffb3;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.projects-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  text-shadow: 0 0 10px #00ffb3;
+}
+
+.projects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.project-card {
+  width: 280px;
+  height: 200px;
+  perspective: 1000px;
+  margin-top: 1rem;
+}
+
+.project-card .card-front,
+.project-card .card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  border: 1px solid #00ffb3;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #00ffb3aa;
+  padding: 1.2rem;
+  background-color: #111;
+  color: #00ffb3;
+  transition: transform 0.6s;
+}
+
+.project-card .card-front {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.project-card .card-back {
+  transform: rotateY(180deg);
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.project-card:hover .card-front {
+  transform: rotateY(180deg);
+}
+
+.project-card:hover .card-back {
+  transform: rotateY(360deg);
+}
+
+.project-card {
+  position: relative;
+}
+
+.project-card {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.6s ease-out;
+}
+.project-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 🎯 LIVE TERMINAL STYLE */
+#terminal-section {
+  background-color: #000;
+  padding: 5rem 2rem;
+  color: #00ff00;
+  font-family: 'Share Tech Mono', monospace;
+  position: relative;
+  z-index: 1;
+}
+
+.terminal-container {
+  max-width: 800px;
+  margin: auto;
+  background-color: #111;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #00ff00aa;
+  overflow: hidden;
+}
+
+.terminal-header {
+  background-color: #222;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+.terminal-title {
+  color: #00ff00;
+  font-weight: bold;
+  position: absolute;
+  right: 1rem;
+}
+
+.circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.red { background-color: #ff4b4b; }
+.yellow { background-color: #fcd12a; }
+.green { background-color: #00ff00; }
+
+.terminal-body {
+  padding: 2rem 1rem;
+  background-color: #000;
+  min-height: 250px;
+}
+
+.line {
+  white-space: pre;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.cursor {
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ✅ TESTIMONIALS / HACKER NETWORK */
+#testimonials-section {
+  background-color: #000;
+  padding: 5rem 2rem;
+  color: #00ffb3;
+  font-family: 'Share Tech Mono', monospace;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonials-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  text-shadow: 0 0 10px #00ffb3;
+}
+
+.testimonials-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.testimonial-card {
+  background-color: #111;
+  border: 1px solid #00ffb3;
+  box-shadow: 0 0 15px #00ffb3aa;
+  padding: 2rem;
+  width: 300px;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px #00ffb3ee;
+}
+
+.avatar {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.testimonial-card {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.testimonial-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.6s ease-out;
+}
+
+.avatar-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid #00ffb3;
+  box-shadow: 0 0 10px #00ffb3aa;
+  margin-bottom: 1rem;
+}
+/* ✅ GALLERY / MEDIA FEED */
+#gallery-section {
+  background-color: #000;
+  padding: 5rem 2rem;
+  font-family: 'Share Tech Mono', monospace;
+  color: #00ffb3;
+  position: relative;
+  z-index: 1;
+}
+
+.gallery-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  text-shadow: 0 0 10px #00ffb3;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #00ffb3;
+  box-shadow: 0 0 15px #00ffb3aa;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px #00ffb3;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: brightness(0.9);
+}
+
+/* ✅ NEWSLETTER / UNDERGROUND SIGNUP */
+#newsletter-section {
+  background-color: #000;
+  padding: 5rem 2rem;
+  color: #00ffb3;
+  font-family: 'Share Tech Mono', monospace;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.newsletter-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px #00ffb3;
+}
+
+.newsletter-text {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  color: #00ffaa;
+}
+
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  max-width: 500px;
+  margin: auto;
+}
+
+.newsletter-form input[type="email"] {
+  padding: 1rem;
+  width: 100%;
+  max-width: 400px;
+  background-color: #111;
+  border: 2px solid #00ffb3;
+  border-radius: 5px;
+  color: #00ffb3;
+  font-family: monospace;
+  font-size: 1rem;
+  box-shadow: 0 0 10px #00ffb3aa;
+}
+
+.newsletter-form button {
+  background-color: transparent;
+  border: 2px solid #00ffb3;
+  color: #00ffb3;
+  font-size: 1rem;
+  padding: 0.75rem 2rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s ease;
+  margin-top: 1rem;
+  box-shadow: 0 0 10px #00ffb3aa;
+}
+
+.newsletter-form button:hover {
+  background-color: #00ffb3;
+  color: #000;
+  box-shadow: 0 0 20px #00ffb3;
+}
+
+.form-message {
+  margin-top: 1rem;
+  color: #00ffaa;
+  font-size: 0.95rem;
+}
+
+/* ✅ TERMINAL FOOTER */
+#terminal-footer {
+  background-color: #000;
+  color: #00ffb3;
+  font-family: 'Share Tech Mono', monospace;
+  padding: 2rem 1rem;
+  border-top: 1px solid #00ffb3;
+  box-shadow: 0 -5px 15px #00ffb360;
+  text-align: left;
+  position: relative;
+  z-index: 1;
+}
+
+.terminal-output {
+  max-width: 900px;
+  margin: auto;
+  line-height: 1.7;
+}
+
+.command {
+  color: #00ffaa;
+  margin: 0;
+}
+
+.response {
+  color: #00ffb3;
+  margin: 0 0 1rem 1rem;
+}
+
+.footer-end {
+  margin-top: 2rem;
+  color: #00e6a8;
+  text-align: center;
+  font-size: 0.95rem;
+  text-shadow: 0 0 5px #00ffb3;
+}
+
+
+/* ✅ HACKER PRO HEADER / NAVBAR */
+.main-header {
+  background-color: #000;
+  border-bottom: 1px solid #00ffb3;
+  color: #00ffb3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  font-family: 'Share Tech Mono', monospace;
+  box-shadow: 0 0 15px #00ffb360;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #00ffaa;
+  text-shadow: 0 0 10px #00ffaa;
+}
+
+.logo span {
+  color: #00ffb3;
+}
+
+.navbar {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #00ffb3;
+  font-size: 1rem;
+  transition: 0.3s ease;
+  position: relative;
+}
+
+.navbar a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: #00ffaa;
+  left: 0;
+  bottom: -3px;
+  transition: 0.3s ease;
+}
+
+.navbar a:hover::after {
+  width: 100%;
+}
+
+.menu-icon {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #00ffb3;
+}
+
+/* 🔁 Responsive Navbar */
+@media (max-width: 768px) {
+  .navbar {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 65px;
+    right: 0;
+    background-color: #000;
+    width: 100%;
+    padding: 1rem;
+    border-top: 1px solid #00ffb3;
+  }
+  
+  .navbar.active {
+    display: flex;
+  }
+  
+  .menu-icon {
+    display: block;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+.navbar a {
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.main-header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+
+/* 🔼 SCROLL TO TOP BUTTON */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #000;
+  color: #00ffb3;
+  border: 2px solid #00ffb3;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  display: none;
+  box-shadow: 0 0 15px #00ffb3aa;
+  transition: 0.3s ease;
+  z-index: 9999;
+}
+
+.scroll-top-btn:hover {
+  background-color: #00ffb3;
+  color: #000;
+  box-shadow: 0 0 25px #00ffb3;
+}
+
+
+section {
+  scroll-margin-top: 100px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ✅ WHATSAPP BUTTON STYLE */
+#whatsappHelp {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  z-index: 9999;
+  background-color: #25D366;
+  padding: 10px;
+  margin-top: -30px;
+  border-radius: 50%;
+  box-shadow: 0 0 15px #25D366aa;
+  transition: transform 0.3s ease;
+}
+
+#whatsappHelp:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+#whatsappHelp img {
+  width: 40px;
+  height: 40px;
+  
+}
